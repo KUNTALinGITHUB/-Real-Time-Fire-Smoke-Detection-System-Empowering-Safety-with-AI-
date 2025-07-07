@@ -1,0 +1,6 @@
+Flask==2.3.3
+opencv-python==4.9.0.80
+ultralytics==8.0.204
+folium==0.15.1
+numpy==1.26.4
+torch==2.2.2

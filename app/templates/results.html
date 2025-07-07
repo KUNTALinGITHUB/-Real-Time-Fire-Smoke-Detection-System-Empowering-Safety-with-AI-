@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🔥 Fire & Smoke Detection Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d9534f;
+            margin-top: 30px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .entry {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .entry:last-child {
+            border-bottom: none;
+        }
+
+        .entry h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .entry a {
+            color: #0275d8;
+            text-decoration: none;
+        }
+
+        .entry a:hover {
+            text-decoration: underline;
+        }
+
+        .images {
+            margin-top: 10px;
+        }
+
+        .images img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #777;
+            font-size: 1.2em;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔥 Fire & Smoke Detection Results</h1>
+
+    <div class="container">
+        {% if dashboard %}
+            {% for entry in dashboard %}
+                <div class="entry">
+                    <h3>Detection on {{ entry.date }} at {{ entry.time }}</h3>
+                    <p><a href="{{ url_for('serve_clip', filename=entry.map) }}" target="_blank">📍 View Location on Map</a></p>
+
+                    <div class="images">
+                        {% for img in entry.images %}
+                            <img src="{{ url_for('serve_clip', filename=img.replace('\\', '/').split('/')[-1]) }}" alt="{{ img }}">
+
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-data">No detections found.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
