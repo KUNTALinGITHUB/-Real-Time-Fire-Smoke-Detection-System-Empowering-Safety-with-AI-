@@ -33,7 +33,7 @@ fire_smoke_detection/
 
 🛠️ Setup Instructions
 Clone the repository:
-git clone https://github.com/yourusername/fire-smoke-detection.git
+gh repo clone KUNTALinGITHUB/-Real-Time-Fire-Smoke-Detection-System-Empowering-Safety-with-AI-
 cd fire-smoke-detection
 
 
